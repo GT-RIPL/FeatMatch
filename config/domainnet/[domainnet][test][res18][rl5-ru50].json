@@ -1,0 +1,68 @@
+{
+  "data":
+  {
+    "dataset": "domainnet",
+    "root_dir": "dataset/domainnet",
+    "tgt_domains": ["real"],
+    "src_domains": ["clipart", "painting", "sketch", "quickdraw"],
+    "shape": 128,
+    "Nv": 0.01,
+    "Nl": 0.05,
+    "Nu": 0.50,
+    "Wu": [1.0, 1.0, 1.0, 1.0],
+    "Nd": 1.0
+  },
+
+  "model":
+  {
+    "num_layers": 1,
+    "num_heads": 4,
+    "backbone": "resnet-18",
+    "dropout": 0.0,
+    "classes": 345,
+    "negative_slope": 0.0,
+    "pk": 20,
+    "l_ratio": 0.5,
+    "strategy": "kmeans"
+  },
+
+  "loss":
+  {
+    "mix": 0.5,
+    "graph": 2.0,
+    "criterion": "log_loss"
+  },
+
+  "train":
+  {
+    "bsl": 32,
+    "bsu": 128,
+    "lr": 0.04,
+    "mom": 0.95,
+    "weight_decay": 2e-4,
+    "pretrain_iters": 4000,
+    "cycle_iters": 100000,
+    "end_iters": 40000,
+    "coeff_rampup": 100000,
+    "update_interval": 500,
+    "sample_interval": 1000
+  },
+
+  "transform":
+  {
+    "preprocess":
+    {
+      "type": "mean-std",
+      "mean": [0.60409881, 0.58311918, 0.54817234],
+      "std": [0.32740812, 0.32171162, 0.34273202]
+    },
+
+    "data_augment":
+    {
+      "N": 2,
+      "M": 9,
+      "K": 4,
+      "T": 0.75
+    }
+  }
+}

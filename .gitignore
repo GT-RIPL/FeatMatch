@@ -1,0 +1,9 @@
+.idea/
+*.pyc
+dataset/*
+sync-*
+weights
+vis
+legacy
+
+!dataset/.gitkeep 
